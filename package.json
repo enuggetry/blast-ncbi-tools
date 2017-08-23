@@ -5,6 +5,7 @@
   "homepage": "https://github.com/wookoouk/blastjs",
   "main": "index.js",
   "scripts": {
+    "postinstall": "node ./util/postinstall.js",
     "test": "./node_modules/mocha/bin/mocha"
   },
   "repository": {
@@ -21,10 +22,15 @@
     "url": "https://github.com/wookoouk/blastjs/issues"
   },
   "dependencies": {
+    "app-root-path": "^2.0.1",
     "download": "^4.2.0",
+    "fs-extra": "^4.0.1",
     "ftp": "^0.3.10",
     "lodash": "^4.16.6",
+    "node-getopt": "^0.2.3",
+    "shelljs": "^0.7.8",
     "tar.gz": "1.0.2",
+    "to-absolute-path": "^1.0.0",
     "uuid": "^2.0.3",
     "xml2js": "^0.4.12"
   },
