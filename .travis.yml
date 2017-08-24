@@ -1,9 +1,12 @@
+sudo: false
 language: node_js
 node_js:
   - "0.12"
   - "0.10"
   - "4.0.0"
-services:
-  - mongodb
 before_script:
-  - node util/getBlast.js
+  - node blast_getBlast.js
+install:
+  - npm install
+script:
+  - npm test
