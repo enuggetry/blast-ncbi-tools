@@ -8,6 +8,7 @@ var fs = require("fs-extra");
 var shelljs = require("shelljs");
 var getopt = require('node-getopt');
 var toAbsolutePath = require('to-absolute-path');
+var path = require('path');
 
 var thisPath = appPath; //process.cwd();
 
@@ -21,37 +22,48 @@ if (fs.existsSync(thisPath+"/node_modules/blastjs")) {
 thisPath += "/bin/";
 
 var options = [
-    ['','config', 'display merged config']
+//    ['h','help', 'display this help']
 ];
 
-// help
-options = options.concat([
-    ['h','help', 'display this help']
-]);
+// get command line options
+var getopt = new getopt(options);
 
-var getopts = new getopt(options);
+getopt.bindHelp();     // bind option 'help' to default action
+var opt = getopt.parseSystem(); // parse command line
 
-getopts.bindHelp();     // bind option 'help' to default action
-var opt = getopts.parseSystem(); // parse command line
+var helpTxt = 
+    "Usage: node blast_setPath.js <source path of blast+ tools>\n" +
+    //"[[OPTIONS]]\n" +
+    "";
 
+getopt.setHelp(helpTxt);
 
-//shelljs.ln("ln -s /path/to/file /path/to/symlink")
+/* Display help if no arguments are passed */
+if (!process.argv.slice(2).length) {
+	getopt.showHelp();
+	process.exit(1);
+}
 
+// check parameter is there
 if (typeof opt.argv[0] !== 'undefined') {
-    //console.log("parameter",opt.argv[0]);
     var abspath = toAbsolutePath(opt.argv[0]);
-    //console.log("abspath",abspath);
+	
+	// parameter path exists?
     if (fs.existsSync(abspath)) {
-        console.log("ln -s "+abspath+" "+thisPath);
-		fs.ensureDirSync(thisPath);
-		thisPath += 'ncbi-blast+';
+        // create the target dir if necessary
+        fs.ensureDirSync(thisPath);
+
+        var pathbase = path.basename(abspath);
+        thisPath += pathbase;
+        //console.log("ln -s "+abspath+" "+thisPath);
+		
+        // create the symlink
         shelljs.ln('-s',abspath,thisPath);
-        console.log("NCBI Blast+ lined to ",thisPath);
+        console.log("NCBI Blast+ symlink at:",thisPath);
     }
     else {
         console.log("invalid path");
     }
-    
 }
 else
     console.log("no parameters");
