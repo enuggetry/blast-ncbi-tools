@@ -11,4 +11,4 @@ var trg = appPath;
 //copy scripts to approot
 shelljs.cp(src,trg);
 
-console.log("postinstall done");
+//console.log("blast postinstall done");
