@@ -7,18 +7,23 @@
 
 var fs = require("fs-extra");
 var shelljs = require("shelljs");
+var finder = require('fs-finder');
+var thisPath = require("app-root-path").path;
 
 var setupScript = "getBlast.js";
-var thisPath = process.cwd();
 
-// check if jbrowse is a module
-console.log('p='+thisPath+"/node_modules/blastjs/util/"+setupScript);
-
+// exit if already installed
+var found = finder.from(thisPath).findFiles('blastn');
+if (found.length > 0) {
+    console.log("NCBI Blast+ already installed in",thisPath);
+    process.exit(0);
+}
+// check if blastjs is a module
 if (fs.existsSync(thisPath+"/node_modules/blastjs/util/"+setupScript)) {
     shelljs.cd('node_modules/blastjs');
     console.log('cwd',process.cwd());
 }
 
-console.log("result=",shelljs.exec("node ./util/"+setupScript));
+shelljs.exec("node ./util/"+setupScript);
 
 console.log("NCBI Blast+ path",thisPath);
