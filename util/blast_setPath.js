@@ -10,16 +10,7 @@ var getopt = require('node-getopt');
 var toAbsolutePath = require('to-absolute-path');
 var path = require('path');
 
-var thisPath = appPath; //process.cwd();
-
-
-// check if jbrowse is a module
-if (fs.existsSync(thisPath+"/node_modules/blastjs")) {
-    thisPath = thisPath+"/node_modules/blastjs";
-    shelljs.cd(thisPath);
-}
-
-thisPath += "/bin/";
+var thisPath = appPath + '/blastbin/'; // the target path
 
 var options = [
 //    ['h','help', 'display this help']

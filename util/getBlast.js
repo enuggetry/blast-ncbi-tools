@@ -3,6 +3,9 @@ var Download = require('download');
 var Client = require('ftp');
 var fs = require('fs');
 var targz = require('tar.gz');
+var appPath = require("app-root-path").path;
+
+var downloadTo = appPath + '/blastbin';
 
 var tt = 'ftp.ncbi.nlm.nih.gov';
 var address = '/blast/executables/blast+/LATEST/';
@@ -58,20 +61,20 @@ function downloadIt(url) {
   console.log('Downloading', url, '...');
   new Download({mode: '755'})
     .get('http://' + url) //have to add http to url
-    .dest('bin')
+    .dest(downloadTo)
     .run(extractIt);
 }
 
 function extractIt(err){
   if(err) throw err;
 
-  console.log('Extracting file', 'bin/' + fileName);
-  targz().extract('bin/' + fileName, 'bin/', deleteIt);
+  console.log('Extracting file', downloadTo+'/' + fileName);
+  targz().extract(downloadTo + '/' + fileName, downloadTo+'/', deleteIt);
 }
 
 function deleteIt(err){
   if(err) throw err;
   
   console.log('Cleaning up ...');
-  fs.unlinkSync('bin/' + fileName);
+  fs.unlinkSync(downloadTo + '/' + fileName);
 }

@@ -2,3 +2,5 @@
 node_modules
 bin
 test/testDB.*
+tmp
+blastbin
