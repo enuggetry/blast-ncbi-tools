@@ -8,24 +8,25 @@
 var fs = require("fs-extra");
 var shelljs = require("shelljs");
 var finder = require('fs-finder');
-var thisPath = require("app-root-path").path + '/blastbin';
+var appPath = require("app-root-path").path;
 
-var setupScript = "getBlast.js";
+var binPath = appPath + '/blastbin';
 
-// exit if already installed
-if (fs.pathExistsSync(thisPath)) {
-    var found = finder.from(thisPath).findFiles('blastn');
+// exit if blast+ already installed
+if (fs.pathExistsSync(binPath)) {
+    var found = finder.from(binPath).findFiles('blastn');
     if (found.length > 0) {
-        console.log("NCBI Blast+ already installed in",thisPath);
+        console.log("NCBI Blast+ already installed in",binPath);
         process.exit(0);
     }
 }
-// check if blastjs is a module
-if (fs.existsSync(thisPath+"/node_modules/blastjs/util/"+setupScript)) {
-    shelljs.cd('node_modules/blastjs');
-    console.log('cwd',process.cwd());
+// check if blastjs is a module in node_modules
+var checkPath = appPath + '/node_modules/blastjs';
+if (fs.existsSync(checkPath+"/util/getBlast.js")) {
+    shelljs.cd(checkPath);
 }
+console.log("cwd",process.cwd());
 
-shelljs.exec("node ./util/"+setupScript);
+shelljs.exec("node ./util/getBlast.js");
 
-console.log("NCBI Blast+ path",thisPath);
+console.log("NCBI Blast+ path",binPath);
