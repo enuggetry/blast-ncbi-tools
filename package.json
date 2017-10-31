@@ -6,7 +6,8 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "node ./util/postinstall.js",
-    "test": "./node_modules/mocha/bin/mocha test/test2"
+    "test": "./node_modules/mocha/bin/mocha test/test2",
+    "testhtgs": "./node_modules/mocha/bin/mocha test/test_htgs"
   },
   "repository": {
     "type": "git",
