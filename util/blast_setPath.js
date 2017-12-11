@@ -23,6 +23,7 @@ getopt.bindHelp();     // bind option 'help' to default action
 var opt = getopt.parseSystem(); // parse command line
 
 var helpTxt = 
+    "Creates a symlink reference to existing NCBI tools into approot/blastbin directory\n\n"+
     "Usage: node blast_setPath.js <source path of blast+ tools>\n" +
     //"[[OPTIONS]]\n" +
     "";

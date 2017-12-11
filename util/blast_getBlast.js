@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-/* Determines appropriate directory where jbrowse is installed (app root or as a module in node_modules).
+/* Installs NCBI blast utilities.
+ * Determines appropriate directory where jbrowse is installed (app root or as a module in node_modules).
  * Then runs setup.sh
  * (this script gets copied to the app root directory upon npm install)
  */
