@@ -3,7 +3,7 @@
   "version": "1.5.3",
   "description": "a blast+ wrapper",
   "homepage": "https://github.com/wookoouk/blastjs",
-  "main": "index.js",
+  "main": "lib/blast.js",
   "scripts": {
     "postinstall": "node ./util/postinstall.js",
     "test": "./node_modules/mocha/bin/mocha test/test2",
@@ -28,6 +28,7 @@
     "download": "^4.2.0",
     "fs-extra": "^4.0.1",
     "fs-finder": "^1.8.1",
+    "ftp": "^0.3.10",
     "jsftp": "^2.1.2",
     "lodash": "^4.16.6",
     "node-getopt": "^0.2.3",
