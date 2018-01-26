@@ -3,29 +3,40 @@ var fs = require('fs-extra');
 
 
 
-var blast = require('../index.js');
-var appPath = require("app-root-path").path;
+describe('blastjs', function () {
+  this.timeout(15000);
+  describe('#blast', function () {
+    it('blastn XML result test', function(done){
+        this.timeout(90000); //Calling remote can take a little while.
+        //console.log('Querying remote database...');
+        var blast = require('../lib/blast.js');
+        var appPath = require("app-root-path").path;
+        //var blast = require('blastjs');
+        
+        blast.outputString(true); //optional, provides string output instead of JSON
+        
+        var dbPath = 'htgs';
+        var query = '>24.6jsd2.Tut\nGGTGTTGATCATGGCTCAGGACAAACGCTGGCGGCGTGCTTAATACATGCAAGTCGAACGGGCTACCTTCGGGTAGCTAGTG'
+        +'\n>24.6jsd3.Tut\nATGATCATGGCTCAGATTGAACGCTGGCGGCATGCCTTACACATGCAAGTCGAACGGCAGCACGGGGAAGGGGCAACTCTTT';
 
-blast.outputString(true); //optional, provides string output instead of JSON
+        var options = {
+                query: query,
+                db: dbPath,
+                outfmt: 5,
+                outputDirectory: appPath+'/tmp'
+        };
 
-var dbPath = '/var/www/html/blastdb/htgs/13apr2014/htgs';
+        fs.ensureDir(options.outputDirectory);
 
-var options = {
-        db: dbPath,
-        outfmt: 5,
-        outputDirectory: appPath+'/tmp',
-        queryFile: './test/700hits.fa',
-        outFileExt: 'blastxml'
-};
+        var buffer = fs.readFileSync('./test/blastresult.xml');
 
-fs.ensureDir(options.outputDirectory);
-
-//read the file that the result will be compared against.
-var buffer = fs.readFileSync('./test/blastresult.xml');
-
-blast.blast(options, function(err, results) {
-    assert.equal(err, null);
-    assert(results.match(buffer));     
+        blast.blast(options, function(err, results) {
+            assert.equal(err, null);
+            assert(results.match(buffer));     
+            done();
+        });
+    });
+  });
 });
 
 
