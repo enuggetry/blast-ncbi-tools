@@ -76,6 +76,12 @@ if (typeof opt.argv[0] !== 'undefined') {
             if (sp[0].length && sp[1].length) nalFile = blastDbPath+sp[0]+'.nal';
         }
         
+        if (filelist.length === 0) {
+            console.log('database not found');
+            shell.exec('rm -rf '+blastDbPath);
+            process.exit(1);
+        }
+        
         async.eachSeries(filelist, function(file, cb) {
 
             console.log('Processing file ' + file.name);
@@ -88,6 +94,8 @@ if (typeof opt.argv[0] !== 'undefined') {
                 console.log('All files have been processed successfully');
               
                 if (nalFile) fixNalFile(nalFile,search);
+                
+                process.exit(0);
             }
         });        
         
