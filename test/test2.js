@@ -9,7 +9,7 @@ describe('blastjs', function () {
     it('blastn XML result test', function(done){
         this.timeout(90000); //Calling remote can take a little while.
         //console.log('Querying remote database...');
-        var blast = require('../index.js');
+        var blast = require('../lib/blast.js');
         var appPath = require("app-root-path").path;
         //var blast = require('blastjs');
         
