@@ -1,8 +1,9 @@
-# blast.js
+# jblast.js
 [![Build Status](https://travis-ci.org/TeamMacLean/blastjs.svg?branch=master)](https://travis-ci.org/TeamMacLean/blastjs)
->a BLAST+ wrapper for Node.js
+>a BLAST+ wrapper for Node.js (modified to support jblast)
 
-a demo can be found at [github.com/teammaclean/blastjs-demo](https://github.com/teammaclean/blastjs-demo)
+This project is based on https://www.npmjs.com/package/blastjs, however it has diverged
+to support jbh-jblast
 
 ## Install
 
@@ -14,30 +15,11 @@ npm install blastjs
 
 If Blast+ is not installed you can run:    
 ```bash
-node util/getBlast.js
+node bin/blast_getBlast.js
 ```
 and the latest version of Blast+ will be downloaded and placed in the bin folder for you.
 
 ## Usage
-### make database
-
-```javascript
-var blast = require('blastjs');
-
-var type = 'nucl';
-var fileIn = './test.fasta';
-var outPath = './';
-var name = 'example';
-
-
-blast.makeDB(type, fileIn, outPath, name, function(err){
-  if(err){
-    console.error(err);   
-  } else {
-    console.log('database created at', outPath);
-  }
-});
-```
 
 ### blast n
 ```javascript
@@ -57,7 +39,8 @@ blast.blastN(dbPath, query, function (err, output) {
 
 ```
 
-## API
+## API (much of this was not specifically maintained but may still work fine)
+
 * .makeDB(type, fileIn, outPath, name, cb)    
   callback is passed (err, stdOut, stdErr, fileOut).
   
