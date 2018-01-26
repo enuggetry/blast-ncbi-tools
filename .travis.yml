@@ -6,5 +6,6 @@ before_script:
   - node blast_getBlast.js
 install:
   - npm install
+  - ./lib/blast_getBlast.js
 script:
   - npm test
