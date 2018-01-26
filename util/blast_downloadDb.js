@@ -48,13 +48,25 @@ if (typeof opt.argv[0] !== 'undefined') {
         
         var filelist = [];
  
+        var dbSubDir = search;
+        
+        // when search name contains a dot, it's a partial db.  (far as I understand). in this case we
+        // will hack the directory name and .nal file.
+        // this allows us to pull a smaller db for demo purposes.
+ 
+        if (search.indexOf('.')!== -1) {
+            dbSubDir = search.split('.')[0];
+        }
+ 
+        // todo: check md5 checksum someday.
+        
         // eliminate files with .md5 extentions
         for(var i in res) {
             if (res[i].name.indexOf('.md5') === -1) filelist.push(res[i]);
         }
 
         // ensure target directory
-        var blastDbPath = approot+'/blastdb/'+search+'/';
+        var blastDbPath = approot+'/blastdb/'+dbSubDir+'/';
         fs.ensureDirSync(blastDbPath);
         
         // determine if this is a partial dataset (ie. "htgs.05" instead of "htgs")
@@ -114,6 +126,7 @@ if (typeof opt.argv[0] !== 'undefined') {
                 cb();
             });
         }
+        
         function fixNalFile(file,dbName) {
             console.log('fixing .nal file',file,dbName);
             
