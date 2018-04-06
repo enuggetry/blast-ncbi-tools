@@ -5,7 +5,7 @@
   "homepage": "https://github.com/wookoouk/blastjs",
   "main": "lib/blast.js",
   "scripts": {
-    "postinstall": "node ./util/postinstall.js",
+    "postinstall": "node ./bin/postinstall.js",
     "test": "./node_modules/mocha/bin/mocha test/test2",
     "testhtgs": "./node_modules/mocha/bin/mocha test/test_htgs"
   },
