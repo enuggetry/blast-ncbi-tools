@@ -1,6 +1,6 @@
 .idea
 node_modules
-bin
 test/testDB.*
 tmp
 blastbin
+blastdb

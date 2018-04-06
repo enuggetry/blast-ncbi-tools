@@ -6,7 +6,7 @@ var fs = require('fs-extra');
 console.log("blastjs postinstall",modPath);
 
 // copy blast_* utils to the app directory.
-var src = modPath+"/util/blast_*";
+var src = modPath+"/bin/blast_*";
 var trg = appPath+"/utils";
 
 try {

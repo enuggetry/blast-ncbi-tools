@@ -54,7 +54,7 @@ if (typeof opt.argv[0] !== 'undefined') {
         // create the symlink
         shelljs.ln('-s',abspath,target);
         console.log("NCBI Blast+ symlink at:",);
-    }
+    } 
     else {
         console.log("invalid path");
     }
