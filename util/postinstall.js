@@ -7,7 +7,7 @@ console.log("blastjs postinstall",modPath);
 
 // copy blast_* utils to the app directory.
 var src = modPath+"/util/blast_*";
-var trg = appPath+"/bin";
+var trg = appPath+"/utils";
 
 try {
     // if dir doesn't exist, create it
