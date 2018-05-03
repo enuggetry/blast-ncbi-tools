@@ -3,21 +3,18 @@
 >a BLAST+ wrapper for Node.js (modified to support jblast)
 
 This project is based on https://www.npmjs.com/package/blastjs, however it has diverged
-to support jbh-jblast
+to support jbconnect-hook-jblast
 
 ## Install
 
-If you do not have Node.js installed you can get it at [https://nodejs.org](https://nodejs.org)
-
 ```bash
-npm install blastjs
+npm install enuggetry/blast-ncbi-tools
 ```
-
-If Blast+ is not installed you can run:    
+Install NCBI blast+ tools:    
 ```bash
-node bin/blast_getBlast.js
+./utils/blast_getBlastUtils.js
 ```
-and the latest version of Blast+ will be downloaded and placed in the bin folder for you.
+The latest version of Blast+ will be downloaded and placed in the bin folder for you.
 
 ## Usage
 
