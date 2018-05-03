@@ -22,7 +22,7 @@ if (fs.pathExistsSync(binPath)) {
     }
 }
 // check if blastjs is a module in node_modules
-var checkPath = appPath+"/node_modules/jblastjs";
+var checkPath = appPath+"/node_modules/blast-ncbi-tools";
 if (fs.existsSync(checkPath+"/bin/getBlast.js")) {
     shelljs.cd(checkPath);
 }
