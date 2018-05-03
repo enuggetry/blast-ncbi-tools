@@ -10,7 +10,6 @@ var fs = require("fs-extra");
 var shelljs = require("shelljs");
 var finder = require('fs-finder');
 var appPath = require("app-root-path").path;
-var modPath = ""+shelljs.pwd();
 
 var binPath = appPath + '/blastbin';
 
@@ -23,7 +22,7 @@ if (fs.pathExistsSync(binPath)) {
     }
 }
 // check if blastjs is a module in node_modules
-var checkPath = modPath;
+var checkPath = appPath+"/node_modules/jblastjs";
 if (fs.existsSync(checkPath+"/bin/getBlast.js")) {
     shelljs.cd(checkPath);
 }
