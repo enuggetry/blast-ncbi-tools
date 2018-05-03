@@ -10,6 +10,9 @@ to support jbconnect-hook-jblast
 ```bash
 npm install enuggetry/blast-ncbi-tools
 ```
+
+## Utilities
+
 Install NCBI blast+ tools.  The latest version of Blast+ will be downloaded and placed in the blastbin folder of approot.    
 ```bash
 ./utils/blast_getBlastUtils.js
