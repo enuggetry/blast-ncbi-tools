@@ -10,11 +10,24 @@ to support jbconnect-hook-jblast
 ```bash
 npm install enuggetry/blast-ncbi-tools
 ```
-Install NCBI blast+ tools:    
+Install NCBI blast+ tools.  The latest version of Blast+ will be downloaded and placed in the blastbin folder of approot.    
 ```bash
 ./utils/blast_getBlastUtils.js
 ```
-The latest version of Blast+ will be downloaded and placed in the bin folder for you.
+Setup blast+ utils using previously downloaded blast+ utils.
+```bash
+./utils/blast_setPathUtils.js <existing blast+ utils directory>
+```
+Download blast database into approot/blastdb. eg.
+```bash
+./utils/blast_downloadDb.js htgs        (download full htgs database)
+./utils/blast_downloadDb.js htgs.05     (download partial htgs database)
+```
+Setup existing database
+```bash
+./utils/blast_setPathDb.js /home/me/htgs/13apr08 htgs
+```
+
 
 ## Usage
 
