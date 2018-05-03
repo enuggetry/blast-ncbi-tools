@@ -1,23 +1,36 @@
-# jblast.js
+# blast-ncbi-tools
 [![Build Status](https://travis-ci.org/TeamMacLean/blastjs.svg?branch=master)](https://travis-ci.org/TeamMacLean/blastjs)
 >a BLAST+ wrapper for Node.js (modified to support jblast)
 
 This project is based on https://www.npmjs.com/package/blastjs, however it has diverged
-to support jbh-jblast
+to support jbconnect-hook-jblast
 
 ## Install
 
-If you do not have Node.js installed you can get it at [https://nodejs.org](https://nodejs.org)
-
 ```bash
-npm install blastjs
+npm install enuggetry/blast-ncbi-tools
 ```
 
-If Blast+ is not installed you can run:    
+## Utilities
+
+Install NCBI blast+ tools.  The latest version of Blast+ will be downloaded and placed in the blastbin folder of approot.    
 ```bash
-node bin/blast_getBlast.js
+./utils/blast_getBlastUtils.js
 ```
-and the latest version of Blast+ will be downloaded and placed in the bin folder for you.
+Setup blast+ utils using previously downloaded blast+ utils.
+```bash
+./utils/blast_setPathUtils.js <existing blast+ utils directory>
+```
+Download blast database into approot/blastdb. eg.
+```bash
+./utils/blast_downloadDb.js htgs        (download full htgs database)
+./utils/blast_downloadDb.js htgs.05     (download partial htgs database)
+```
+Setup existing database
+```bash
+./utils/blast_setPathDb.js /home/me/htgs/13apr08 htgs
+```
+
 
 ## Usage
 
