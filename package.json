@@ -1,8 +1,8 @@
 {
-  "name": "jblastjs",
+  "name": "blast-ncbi-tools",
   "version": "1.5.3",
   "description": "NCBI blast+ wrapper for JBlast",
-  "homepage": "https://github.com/enuggetry/jblastjs",
+  "homepage": "https://github.com/enuggetry/blast-ncbi-tools",
   "main": "lib/blast.js",
   "scripts": {
     "postinstall": "node ./bin/postinstall.js",
