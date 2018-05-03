@@ -10,6 +10,7 @@ var fs = require("fs-extra");
 var shelljs = require("shelljs");
 var finder = require('fs-finder');
 var appPath = require("app-root-path").path;
+var modPath = ""+shelljs.pwd();
 
 var binPath = appPath + '/blastbin';
 
@@ -22,12 +23,12 @@ if (fs.pathExistsSync(binPath)) {
     }
 }
 // check if blastjs is a module in node_modules
-var checkPath = appPath + '/node_modules/blastjs';
-if (fs.existsSync(checkPath+"/util/getBlast.js")) {
+var checkPath = modPath;
+if (fs.existsSync(checkPath+"/bin/getBlast.js")) {
     shelljs.cd(checkPath);
 }
 console.log("cwd",process.cwd());
 
-shelljs.exec("node ./util/getBlast.js");
+shelljs.exec("node ./bin/getBlast.js");
 
 console.log("NCBI Blast+ path",binPath);
