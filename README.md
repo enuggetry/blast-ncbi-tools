@@ -1,4 +1,4 @@
-# jblast.js
+# blast-ncbi-tools
 [![Build Status](https://travis-ci.org/TeamMacLean/blastjs.svg?branch=master)](https://travis-ci.org/TeamMacLean/blastjs)
 >a BLAST+ wrapper for Node.js (modified to support jblast)
 
