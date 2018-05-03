@@ -1,8 +1,8 @@
 {
-  "name": "blastjs",
+  "name": "jblastjs",
   "version": "1.5.3",
-  "description": "a blast+ wrapper",
-  "homepage": "https://github.com/wookoouk/blastjs",
+  "description": "NCBI blast+ wrapper for JBlast",
+  "homepage": "https://github.com/enuggetry/jblastjs",
   "main": "lib/blast.js",
   "scripts": {
     "postinstall": "node ./bin/postinstall.js",
@@ -11,9 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wookoouk/blastjs.git"
+    "url": "https://github.com/enuggetry/jblastjs.git"
   },
   "keywords": [
+    "jblast",
     "blast",
     "blast+"
   ],
