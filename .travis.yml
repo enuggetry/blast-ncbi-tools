@@ -3,7 +3,7 @@ language: node_js
 node_js:
   - "8.1.3"
 before_script:
-  - node ./bin/blast_getBlast.js
+  - node ./bin/blast_getBlastUtils.js
 install:
   - npm install
 script:
