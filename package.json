@@ -1,6 +1,6 @@
 {
   "name": "blast-ncbi-tools",
-  "version": "1.5.3",
+  "version": "0.10.100",
   "description": "NCBI blast+ wrapper for JBlast",
   "homepage": "https://github.com/enuggetry/blast-ncbi-tools",
   "main": "lib/blast.js",
@@ -18,7 +18,7 @@
     "blast",
     "blast+"
   ],
-  "author": "Martin Page <wookoouk@gmail.com>",
+  "author": "enuggetry",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/enuggetry/blast-ncbi-tools/issues"
