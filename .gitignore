@@ -4,3 +4,4 @@ test/testDB.*
 tmp
 blastbin
 blastdb
+*.tgz
