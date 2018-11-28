@@ -4,8 +4,8 @@ var JSFtp = require("jsftp");
 var getopt = require('node-getopt');
 var path = require('path');
 var shell = require('shelljs');
-var approot = path.dirname(require.main.filename);
-//var approot = require('app-root-path');
+//var approot = path.dirname(require.main.filename);
+var approot = require('app-root-path');
 var fs = require("fs-extra");
 var async = require("async");
 

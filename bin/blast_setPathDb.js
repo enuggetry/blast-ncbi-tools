@@ -4,8 +4,8 @@
  * (this script gets copied to the app root directory upon npm install)
  */
 var path = require('path');
-var appPath = path.dirname(require.main.filename);
-//var appPath = require("app-root-path").path;
+//var appPath = path.dirname(require.main.filename);
+var appPath = require("app-root-path").path;
 var fs = require("fs-extra");
 var shelljs = require("shelljs");
 var getopt = require('node-getopt');

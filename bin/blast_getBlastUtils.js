@@ -10,8 +10,8 @@ var fs = require("fs-extra");
 var shelljs = require("shelljs");
 var finder = require('fs-finder');
 var path = require('path');
-var appPath = path.dirname(require.main.filename);
-//var appPath = require("app-root-path").path;
+//var appPath = path.dirname(require.main.filename);
+var appPath = require("app-root-path").path;
 
 var binPath = appPath + '/blastbin';
 
