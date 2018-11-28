@@ -3,7 +3,9 @@ var Download = require('download');
 var Client = require('ftp');
 var fs = require('fs');
 var targz = require('tar.gz');
-var appPath = require("app-root-path").path;
+var path = require('path');
+var appPath = path.dirname(require.main.filename);
+//var appPath = require("app-root-path").path;
 
 var downloadTo = appPath + '/blastbin';
 

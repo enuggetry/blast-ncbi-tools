@@ -3,12 +3,13 @@
 /* 
  * (this script gets copied to the app root directory upon npm install)
  */
-var appPath = require("app-root-path").path;
+var path = require('path');
+var appPath = path.dirname(require.main.filename);
+//var appPath = require("app-root-path").path;
 var fs = require("fs-extra");
 var shelljs = require("shelljs");
 var getopt = require('node-getopt');
 var toAbsolutePath = require('to-absolute-path');
-var path = require('path');
 
 var thisPath = appPath + '/blastbin/'; // the target path
 

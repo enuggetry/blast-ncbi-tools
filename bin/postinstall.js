@@ -1,4 +1,6 @@
-var appPath = require("app-root-path").path;
+var path = require('path');
+var appPath = path.dirname(require.main.filename);
+//var appPath = require("app-root-path").path;
 var shelljs = require("shelljs");
 var modPath = ""+shelljs.pwd();
 var fs = require('fs-extra');
