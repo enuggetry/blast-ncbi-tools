@@ -18,11 +18,13 @@ var downloadTo = appPath + '/blastbin';
 
 var tt = 'ftp.ncbi.nlm.nih.gov';
 var address = '/blast/executables/blast+/LATEST/';
+var version = '';
 
 // handle first argument as the version number of blast to pull
-if (process.argv.length > 2)
+if (process.argv.length > 2) {
   address = '/blast/executables/blast+/'+process.argv[2]+'/';
-
+  version = process.argv[2];
+}
 var platform = OS.platform();
 var arch = OS.arch();
 
@@ -40,9 +42,10 @@ var fileName = '';
 
 console.log('looking for', platform, arch, address,'...');
 
-// hardwire workaround for travis error
+// workaround for travis error; if version is included, use wget.
 if (process.argv.length > 2) {
-  sh.exec("wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.8.1/ncbi-blast-2.8.1+-x64-linux.tar.gz -P "+downloadTo);
+  //sh.exec("wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.8.1/ncbi-blast-2.8.1+-x64-linux.tar.gz -P "+downloadTo);
+  sh.exec("wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/"+version+"/ncbi-blast-"+version+"+-x64-linux.tar.gz -P "+downloadTo);
   fileName = 'ncbi-blast-2.8.1+-x64-linux.tar.gz';
   extractIt();
 }
