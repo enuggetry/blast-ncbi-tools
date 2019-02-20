@@ -3,6 +3,7 @@ language: node_js
 node_js:
   - "10"
 before_script:
+  - wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/LATEST/ncbi-blast-2.8.1+-x64-linux.tar.gz.md5
 install:
   - npm install
 script:
