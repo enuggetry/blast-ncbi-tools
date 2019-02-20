@@ -39,7 +39,7 @@ if (fs.existsSync(checkPath+"/bin/getBlast.js")) {
 }
 console.log("cwd",process.cwd());
 
-if (process.argv.length > 1) 
+if (process.argv.length > 2) 
 	shelljs.exec("node ./bin/getBlast.js "+process.argv[2]);
 else
 	shelljs.exec("node ./bin/getBlast.js");
