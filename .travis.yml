@@ -6,5 +6,5 @@ before_script:
 install:
   - npm install
 script:
-  - node ./bin/blast_getBlastUtils.js
+  - node ./bin/blast_getBlastUtils.js 2.8.1
   - npm test

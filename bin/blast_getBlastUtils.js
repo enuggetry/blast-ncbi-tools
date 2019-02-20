@@ -4,6 +4,10 @@
  * Determines appropriate directory where jbrowse is installed (app root or as a module in node_modules).
  * Then runs setup.sh
  * (this script gets copied to the app root directory upon npm install)
+ * 
+ * Usage: blast_getBlastUtils.js <version>
+ * Version is optional.  If not specified, latest is pulled.
+ * Example: ./utils/blast_getBlastUtils.js 2.8.1
  */
 
 var fs = require("fs-extra");
@@ -31,6 +35,11 @@ if (fs.existsSync(checkPath+"/bin/getBlast.js")) {
     shelljs.cd(checkPath);
 }
 console.log("cwd",process.cwd());
+
+if (process.argv.length > 1)
+	shelljs.exec("node ./bin/getBlast.js "+process.argv[1]);
+else
+	shelljs.exec("node ./bin/getBlast.js");
 
 shelljs.exec("node ./bin/getBlast.js");
 

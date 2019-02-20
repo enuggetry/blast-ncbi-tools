@@ -1,3 +1,9 @@
+/*
+ * Usage: getBlast.js <version>
+ * Version is optional.  If not specified, latest is pulled.
+ * Example: ./utils/getBlast.js 2.8.1
+ *
+ */
 var OS = require('os');
 var Download = require('download');
 var Client = require('ftp');
@@ -10,8 +16,11 @@ var appPath = require("app-root-path").path;
 var downloadTo = appPath + '/blastbin';
 
 var tt = 'ftp.ncbi.nlm.nih.gov';
-//var address = '/blast/executables/blast+/LATEST/';
-var address = '/blast/executables/blast+/2.8.1/';
+var address = '/blast/executables/blast+/LATEST/';
+
+// handle first argument as the version number of blast to pull
+if (process.argv.length > 1)
+  address = '/blast/executables/blast+/'+process.argv[1]+'/';
 
 var platform = OS.platform();
 var arch = OS.arch();
