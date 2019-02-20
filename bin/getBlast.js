@@ -42,7 +42,7 @@ console.log('looking for', platform, arch, address,'...');
 
 // hardwire workaround for travis error
 if (process.argv.length > 2) {
-  sh.exec("wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.8.1/ncbi-blast-2.8.1+-x64-linux.tar.gz -P "+downloadTo+' -q --show-progress');
+  sh.exec("wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.8.1/ncbi-blast-2.8.1+-x64-linux.tar.gz -P "+downloadTo);
   fileName = 'ncbi-blast-2.8.1+-x64-linux.tar.gz';
   extractIt();
 }
