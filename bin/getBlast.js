@@ -66,7 +66,11 @@ c.on('ready', function () {
     c.end();
   });
 });
-c.connect({host: tt});
+c.connect({
+	host: tt,
+	connTimeout:25000,
+	pasvTimeout:25000
+});
 
 
 function downloadIt(url) {
