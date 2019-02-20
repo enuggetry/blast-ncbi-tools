@@ -27,15 +27,12 @@ if (platform === 'darwin') {
 var foundIt = false;
 var fileName = '';
 
-console.log('looking for', platform, arch, '...');
+console.log('looking for', platform, arch, address,'...');
 
 var c = new Client();
 c.on('ready', function () {
   c.list(address, function (err, list) {
-    if (err) {
-      console.dir("address",address);
-      throw err;
-    }
+    if (err) throw err;
     console.dir("list",list);
 
 
