@@ -10,6 +10,7 @@ var Client = require('ftp');
 var fs = require('fs');
 var targz = require('tar.gz');
 var path = require('path');
+var sh = require('shelljs');
 //var appPath = path.dirname(require.main.filename);
 var appPath = require("app-root-path").path;
 
@@ -39,42 +40,47 @@ var fileName = '';
 
 console.log('looking for', platform, arch, address,'...');
 
-var c = new Client();
-c.on('ready', function () {
-  c.list(address, function (err, list) {
-    if (err) throw err;
-    console.dir("list",list);
+// hardwire workaround for travis error
+if (process.argv.length > 2) {
+  sh.exec("wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.8.1/ncbi-blast-2.8.1+-x64-linux.tar.gz -P "+downloadTo+' -q --show-progress');
+  fileName = 'ncbi-blast-2.8.1+-x64-linux.tar.gz';
+  extractIt();
+}
+
+else {
+  console.log("xxxxxxxxx what the...");
+  var c = new Client();
+  c.on('ready', function () {
+    c.list(address, function (err, list) {
+      if (err) throw err;
+      console.dir("list",list);
 
 
-    list.forEach(function (l) {
-      if (l.name.indexOf(platform) > -1) {
-        if (l.name.indexOf(arch) > -1) {
-          if (l.name.indexOf('md5') === -1) {
-            foundIt = true;
-            fileName = l.name;
+      list.forEach(function (l) {
+        if (l.name.indexOf(platform) > -1) {
+          if (l.name.indexOf(arch) > -1) {
+            if (l.name.indexOf('md5') === -1) {
+              foundIt = true;
+              fileName = l.name;
+            }
           }
         }
+      });
+      if (!foundIt) {
+        console.error('we could not find the correct version of blast+ for you, sorry');
+      } else {
+
+        var finalURL = tt + address + fileName;
+        downloadIt(finalURL);
       }
+      c.end();
     });
-    if (!foundIt) {
-      console.error('we could not find the correct version of blast+ for you, sorry');
-    } else {
-
-      var finalURL = tt + address + fileName;
-      downloadIt(finalURL);
-    }
-    c.end();
   });
-});
-c.connect({
-	host: tt,
-	connTimeout:25000,
-	pasvTimeout:25000
-});
-
+  c.connect({host: tt});
+}
 
 function downloadIt(url) {
-  console.log('Downloading', url, '...');
+  console.log('Downloading', url, downloadTo, '...');
   new Download({mode: '755'})
     .get('http://' + url) //have to add http to url
     .dest(downloadTo)

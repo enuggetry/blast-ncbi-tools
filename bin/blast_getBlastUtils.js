@@ -44,6 +44,4 @@ if (process.argv.length > 2)
 else
 	shelljs.exec("node ./bin/getBlast.js");
 
-shelljs.exec("node ./bin/getBlast.js");
-
 console.log("NCBI Blast+ path",binPath);
