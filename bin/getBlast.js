@@ -10,7 +10,8 @@ var appPath = require("app-root-path").path;
 var downloadTo = appPath + '/blastbin';
 
 var tt = 'ftp.ncbi.nlm.nih.gov';
-var address = '/blast/executables/blast+/LATEST/';
+//var address = '/blast/executables/blast+/LATEST/';
+var address = '/blast/executables/blast+/2.8.1/';
 
 var platform = OS.platform();
 var arch = OS.arch();
