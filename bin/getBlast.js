@@ -32,8 +32,11 @@ console.log('looking for', platform, arch, '...');
 var c = new Client();
 c.on('ready', function () {
   c.list(address, function (err, list) {
-    if (err) throw err;
-    //console.dir(list);
+    if (err) {
+      console.dir("address",address);
+      throw err;
+    }
+    console.dir("list",list);
 
 
     list.forEach(function (l) {
