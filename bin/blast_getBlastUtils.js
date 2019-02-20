@@ -31,13 +31,16 @@ if (fs.pathExistsSync(binPath)) {
 var checkPath = appPath+"/node_modules/blast-ncbi-tools";
 console.log("appPath,checkPath",appPath,checkPath);
 
+if (process.argv.length > 2)
+	console.dir(process.argv[2]);
+
 if (fs.existsSync(checkPath+"/bin/getBlast.js")) {
     shelljs.cd(checkPath);
 }
 console.log("cwd",process.cwd());
 
-if (process.argv.length > 1)
-	shelljs.exec("node ./bin/getBlast.js "+process.argv[1]);
+if (process.argv.length > 1) 
+	shelljs.exec("node ./bin/getBlast.js "+process.argv[2]);
 else
 	shelljs.exec("node ./bin/getBlast.js");
 

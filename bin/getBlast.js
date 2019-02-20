@@ -19,8 +19,8 @@ var tt = 'ftp.ncbi.nlm.nih.gov';
 var address = '/blast/executables/blast+/LATEST/';
 
 // handle first argument as the version number of blast to pull
-if (process.argv.length > 1)
-  address = '/blast/executables/blast+/'+process.argv[1]+'/';
+if (process.argv.length > 2)
+  address = '/blast/executables/blast+/'+process.argv[2]+'/';
 
 var platform = OS.platform();
 var arch = OS.arch();
