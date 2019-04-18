@@ -117,9 +117,11 @@ function deleteIt(err){
   if(err) {
 	  error = true;
 	  throw err;
+	  process.exit(1);
   }
   console.log('Cleaning up ...');
   fs.unlinkSync(downloadTo + '/' + fileName);
+  process.exit(0);
 }
 
 function setupExit() {
