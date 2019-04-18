@@ -21,7 +21,10 @@ var address = '/blast/executables/blast+/LATEST/';
 var version = '';
 
 // handle first argument as the version number of blast to pull
+console.dir(argv);
+
 if (process.argv.length > 2) {
+  console.log("version to pull:",process.argv[2]);
   address = '/blast/executables/blast+/'+process.argv[2]+'/';
   version = process.argv[2];
 }
