@@ -21,6 +21,8 @@ var address = '/blast/executables/blast+/LATEST/';
 var version = '';
 var error = false;
 
+setupExit();
+
 
 // handle first argument as the version number of blast to pull
 console.log("getBlast");
@@ -92,6 +94,8 @@ else {
   c.connect({host: tt});
 }
 
+
+
 function downloadIt(url) {
   console.log('Downloading', url, downloadTo, '...');
   new Download({mode: '755'})
@@ -116,4 +120,33 @@ function deleteIt(err){
   }
   console.log('Cleaning up ...');
   fs.unlinkSync(downloadTo + '/' + fileName);
+}
+
+function setupExit() {
+
+	process.stdin.resume();//so the program will not close instantly
+
+	function exitHandler(options, exitCode) {
+		//if (options.cleanup) console.log('clean');
+		if (exitCode || exitCode === 0) console.log('getBlast exit code',exitCode,error);
+		if (options.exit) {
+			if (error)
+				process.exit(1);
+			else
+				process.exit(0);
+		}
+	}
+
+	//do something when app is closing
+	process.on('exit', exitHandler.bind(null,{cleanup:true}));
+
+	//catches ctrl+c event
+	process.on('SIGINT', exitHandler.bind(null, {exit:true}));
+
+	// catches "kill pid" (for example: nodemon restart)
+	process.on('SIGUSR1', exitHandler.bind(null, {exit:true}));
+	process.on('SIGUSR2', exitHandler.bind(null, {exit:true}));
+
+	//catches uncaught exceptions
+	process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
 }
