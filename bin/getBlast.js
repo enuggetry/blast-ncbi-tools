@@ -56,7 +56,7 @@ if (process.argv.length > 2) {
 
   console.log(cmd);
   sh.exec(cmd);
-  //fileName = 'ncbi-blast-'+version+'+-x64-linux.tar.gz';
+  fileName = 'ncbi-blast-'+version+'+-x64-linux.tar.gz';
   extractIt();
 }
 
