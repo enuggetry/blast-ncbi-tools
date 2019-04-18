@@ -1,5 +1,5 @@
 # blast-ncbi-tools
-[![Build Status](https://travis-ci.org/TeamMacLean/blastjs.svg?branch=master)](https://travis-ci.org/TeamMacLean/blastjs)
+[![Build Status](https://travis-ci.org/TeamMacLean/blastjs.svg?branch=master)](https://travis-ci.org/TeamMacLean/blastjs) [![Greenkeeper badge](https://badges.greenkeeper.io/enuggetry/blast-ncbi-tools.svg)](https://greenkeeper.io/)
 >a BLAST+ wrapper for Node.js (modified to support jblast)
 
 This project is based on https://www.npmjs.com/package/blastjs, however it has diverged
