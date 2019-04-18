@@ -19,9 +19,11 @@ var downloadTo = appPath + '/blastbin';
 var tt = 'ftp.ncbi.nlm.nih.gov';
 var address = '/blast/executables/blast+/LATEST/';
 var version = '';
+var error = false;
+
 
 // handle first argument as the version number of blast to pull
-console.log("*******************");
+console.log("getBlast");
 console.dir(process.argv);
 
 if (process.argv.length > 2) {
@@ -52,16 +54,18 @@ if (process.argv.length > 2) {
 
   console.log(cmd);
   sh.exec(cmd);
-  //fileName = 'ncbi-blast-2.8.1+-x64-linux.tar.gz';
+  fileName = 'ncbi-blast-'+version+'+-x64-linux.tar.gz';
   extractIt();
 }
 
 else {
-  console.log("xxxxxxxxx what the...");
   var c = new Client();
   c.on('ready', function () {
     c.list(address, function (err, list) {
-      if (err) throw err;
+      if (err) {
+		  error = true;
+		  throw err;
+	  }
       console.dir("list",list);
 
 
@@ -97,15 +101,19 @@ function downloadIt(url) {
 }
 
 function extractIt(err){
-  if(err) throw err;
-
+  if(err) {
+	  error = true;
+	  throw err;
+  }
   console.log('Extracting file', downloadTo+'/' + fileName);
   targz().extract(downloadTo + '/' + fileName, downloadTo+'/', deleteIt);
 }
 
 function deleteIt(err){
-  if(err) throw err;
-  
+  if(err) {
+	  error = true;
+	  throw err;
+  }
   console.log('Cleaning up ...');
   fs.unlinkSync(downloadTo + '/' + fileName);
 }
