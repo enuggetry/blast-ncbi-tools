@@ -1,6 +1,6 @@
 {
   "name": "blast-ncbi-tools",
-  "version": "0.10.105",
+  "version": "0.10.106",
   "description": "NCBI blast+ wrapper for JBlast",
   "homepage": "https://github.com/enuggetry/blast-ncbi-tools",
   "main": "lib/blast.js",

@@ -26,7 +26,7 @@ setupExit();
 
 // handle first argument as the version number of blast to pull
 console.log("getBlast");
-console.dir(process.argv);
+//console.dir(process.argv);
 
 if (process.argv.length > 2) {
   console.log("version to pull:",process.argv[2]);
@@ -52,11 +52,11 @@ console.log('looking for', platform, arch, address,'...');
 
 // workaround for travis error; if version is included, use wget.
 if (process.argv.length > 2) {
-  let cmd = "wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/"+version+"/ncbi-blast-"+version+"+-x64-linux.tar.gz -P "+downloadTo;
+  let cmd = "wget -q https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/"+version+"/ncbi-blast-"+version+"+-x64-linux.tar.gz -P "+downloadTo;
 
   console.log(cmd);
   sh.exec(cmd);
-  fileName = 'ncbi-blast-'+version+'+-x64-linux.tar.gz';
+  //fileName = 'ncbi-blast-'+version+'+-x64-linux.tar.gz';
   extractIt();
 }
 
@@ -128,7 +128,7 @@ function setupExit() {
 
 	function exitHandler(options, exitCode) {
 		//if (options.cleanup) console.log('clean');
-		if (exitCode || exitCode === 0) console.log('getBlast exit code',exitCode,error);
+		if (exitCode || exitCode === 0) console.log('getBlast exit code',exitCode);
 		if (options.exit) {
 			if (error)
 				process.exit(1);
