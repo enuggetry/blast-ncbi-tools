@@ -44,9 +44,11 @@ console.log('looking for', platform, arch, address,'...');
 
 // workaround for travis error; if version is included, use wget.
 if (process.argv.length > 2) {
-  //sh.exec("wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.8.1/ncbi-blast-2.8.1+-x64-linux.tar.gz -P "+downloadTo);
-  sh.exec("wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/"+version+"/ncbi-blast-"+version+"+-x64-linux.tar.gz -P "+downloadTo);
-  fileName = 'ncbi-blast-2.8.1+-x64-linux.tar.gz';
+  let cmd = "wget https://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/"+version+"/ncbi-blast-"+version+"+-x64-linux.tar.gz -P "+downloadTo;
+
+  console.log(cmd);
+  sh.exec(cmd);
+  //fileName = 'ncbi-blast-2.8.1+-x64-linux.tar.gz';
   extractIt();
 }
 
