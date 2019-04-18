@@ -22,7 +22,7 @@ var version = '';
 
 // handle first argument as the version number of blast to pull
 console.log("*******************");
-console.dir(argv);
+console.dir(process.argv);
 
 if (process.argv.length > 2) {
   console.log("version to pull:",process.argv[2]);
