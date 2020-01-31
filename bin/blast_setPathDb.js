@@ -11,7 +11,7 @@ var shelljs = require("shelljs");
 var getopt = require('node-getopt');
 var toAbsolutePath = require('to-absolute-path');
 
-var thisPath = appPath + '/blastdb/'; // the target path
+var thisPath = appPath + '/blastdb'; // the target path
 
 var options = [
 //    ['h','help', 'display this help']
@@ -39,22 +39,25 @@ if (!process.argv.slice(2).length) {
 }
 
 // check parameter is there
+if (opt.argv.length <2) {
+    console.log("missing arguments");
+	getopt.showHelp();
+    process.exit(1);
+}
 if (typeof opt.argv[0] !== 'undefined') {
+    console.log("argv",opt.argv);
     var abspath = toAbsolutePath(opt.argv[0]);
-    var target = thisPath+'/'+opt.argv[1];
+    var target = thisPath;
     
 	// parameter path exists?
     if (fs.existsSync(abspath)) {
         // create the target dir if necessary
         fs.ensureDirSync(target);
 
-        //var pathbase = path.basename(abspath);
-        //thisPath += pathbase;
-        //console.log("ln -s "+abspath+" "+thisPath);
-		
         // create the symlink
-        shelljs.ln('-s',abspath,target);
-        console.log("NCBI Blast+ symlink at:",);
+        let symln = target+'/'+opt.argv[1];
+        shelljs.exec('ln -s '+abspath+' '+symln);
+        console.log("NCBI Blast+ symlink at:",symln);
     } 
     else {
         console.log("invalid path");
